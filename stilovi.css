@@ -1,0 +1,47 @@
+
+.title {
+    font-size: 48px;
+    text-align: center;
+}
+
+.img {
+    width: 400px;
+    height: 400px;
+    
+}
+
+.znakovi {
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    gap: 36px;
+    margin: 36px 0px 36px 0px;
+}
+
+.score {
+    font-size: 48px;
+    text-align: center;
+    margin-top: 24px;
+}
+
+.rock {
+    background-color: rgb(238, 236, 236); 
+}
+
+body {
+    background-image: linear-gradient(to right, rgb(93, 93, 250), lightblue);
+    font-family: 'cursive';
+}
+
+.znakovi :hover {
+    border: 4px solid burlywood;
+}
+
+.haeckel {
+    position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color:rgb(48, 123, 167);
+  text-align: center;
+}

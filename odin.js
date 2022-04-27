@@ -1,7 +1,62 @@
 let playerScore = 0;
 let computerScore = 0;
+const img = document.querySelector('.img');
+const score = document.querySelector('#score');
+const containerDiv = document.createElement('div');
+const newDiv = document.createElement('div');
+newDiv.textContent = '0';
+const anotherNewDiv = document.createElement('div');
+anotherNewDiv.textContent = '0';
+containerDiv.appendChild(newDiv);
+containerDiv.appendChild(anotherNewDiv);
+score.appendChild(containerDiv);
+const result = document.createElement('div');
+document.body.appendChild(result);
+result.style.textAlign = 'center';  
+result.style.marginTop = '24px';
+result.style.fontSize = '24px'
+containerDiv.style.display = 'flex';
+containerDiv.style.justifyContent = 'center';
+containerDiv.style.alignItems = 'center';
+containerDiv.style.gap = '96px';
+containerDiv.style.marginTop = '24px';
+containerDiv.style.fontSize = '36px';
+score.style.textAlign = 'center';
+score.style.fontSize = '24px';
+const buttonDiv = document.createElement('div');
+const button = document.createElement('button');
+buttonDiv.appendChild(button);
+document.body.appendChild(buttonDiv);
+button.style.backgroundColor = 'rgb(0,100,155)';
+button.style.height = '48px';
+button.style.width = '240px';
+button.textContent = 'Play Again';
+button.style.color = 'white';
+button.style.borderRadius = '12px';
+buttonDiv.style.display = 'flex';
+buttonDiv.style.justifyContent = 'center';
+buttonDiv.style.alignItems = 'center';
+button.classList.add('btn');
+buttonDiv.style.marginTop = '36px';
+const haeckel = document.createElement('div');
+haeckel.textContent = 'Made by Haeckel';
+document.body.appendChild(haeckel);
+haeckel.style.display = 'flex';
+haeckel.style.justifyContent = 'center';
+haeckel.style.alignItems = 'center';
+haeckel.style.color = 'lightgrey';
+haeckel.style.fontFamily = 'cursive';
+haeckel.classList.add('haeckel');
+haeckel.style.height = '48px';
 
+const rock = document.querySelector('.rock');
+rock.addEventListener('click', rockEvent);
 
+const paper = document.querySelector('.paper');
+paper.addEventListener('click', paperEvent);
+
+const scissors = document.querySelector('.scissors');
+scissors.addEventListener('click', scissorsEvent);
 
 const options = ['rock', 'paper', 'scissors'];
 const computerPlay = () => {
@@ -10,31 +65,85 @@ const computerPlay = () => {
 
 function playRound (playerSelection, computerSelection) {
     if (playerSelection ==='rock' && computerSelection === 'rock') {
-        return 'Tie.';
+        result.textContent = 'Tie. Better luck next time!'
     } else if (playerSelection === 'rock' && computerSelection === 'paper') {
-        return 'lose';
-    } else if ((playerSelection === 'rock' && computerSelection === 'scissors')) {
-        return 'win';
+        anotherNewDiv.textContent = ++computerScore;
+        result.textContent = 'Lose. No luck of the draw unfortunately.';
+
+    } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+        newDiv.textContent = ++playerScore;
+        result.textContent = 'Win! Great job!';
 }
 
     if (playerSelection ==='paper' && computerSelection === 'paper'){
-        return 'tie';
+        result.textContent = 'Tie. Better luck next time!';
+
     } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-        return 'lose';
+        anotherNewDiv.textContent = ++computerScore;
+        result.textContent = 'Lose. No luck of the draw unfortunately.';
+
     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-        return 'win';
+        newDiv.textContent = ++playerScore;
+        result.textContent = 'Win! Great job!';
+        
 }
 
     if (playerSelection ==='scissors' && computerSelection === 'scissors'){
-        return 'tie';
+        result.textContent = 'Tie. Better luck next time!';
+
     } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-        return 'lose';
+        anotherNewDiv.textContent = ++computerScore;
+        result.textContent = 'Lose. No luck of the draw unfortunately.';
+
     } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        return 'win';
+        newDiv.textContent = ++playerScore;
+        result.textContent = 'Win! Great job!';
+    };
+
+    if (playerScore === 5 || computerScore === 5) {
+     if (playerScore > computerScore) {
+         result.textContent = 'Player wins the game!';
+        rock.removeEventListener('click', rockEvent);
+        paper.removeEventListener('click', paperEvent);
+        scissors.removeEventListener('click', scissorsEvent);         
+     }  else if (computerScore > playerScore) {
+         result.textContent = 'Computer clinches victory!';
+        rock.removeEventListener('click', rockEvent);
+        paper.removeEventListener('click', paperEvent);
+        scissors.removeEventListener('click', scissorsEvent);   
+     };   
     };
 };
-   
-const playerSelection = prompt('Choose wisely!').toLowerCase();
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
 
+
+function rockEvent() {
+    const playerSelection = 'rock';
+    const computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+};
+
+
+function paperEvent() {
+    const playerSelection = 'paper';
+    const computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+};
+
+function scissorsEvent() {
+    const playerSelection = 'scissors';
+    const computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+};
+
+
+function playAgain () {
+    playerScore = 0;
+    computerScore = 0;
+    newDiv.textContent = playerScore;
+    anotherNewDiv.textContent = computerScore;
+    rock.addEventListener('click', rockEvent);
+    paper.addEventListener('click', paperEvent);
+    scissors.addEventListener('click', scissorsEvent);
+};
+
+button.addEventListener('click', playAgain);
