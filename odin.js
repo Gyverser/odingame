@@ -2,6 +2,8 @@ let playerScore = 0;
 let computerScore = 0;
 const img = document.querySelector('.img');
 const score = document.querySelector('#score');
+
+//Creating the score
 const containerDiv = document.createElement('div');
 const newDiv = document.createElement('div');
 newDiv.textContent = '0';
@@ -12,6 +14,8 @@ containerDiv.appendChild(anotherNewDiv);
 score.appendChild(containerDiv);
 const result = document.createElement('div');
 document.body.appendChild(result);
+
+//Styling the score
 result.style.textAlign = 'center';  
 result.style.marginTop = '24px';
 result.style.fontSize = '24px'
@@ -23,10 +27,14 @@ containerDiv.style.marginTop = '24px';
 containerDiv.style.fontSize = '36px';
 score.style.textAlign = 'center';
 score.style.fontSize = '24px';
+
+//Creating the button
 const buttonDiv = document.createElement('div');
 const button = document.createElement('button');
 buttonDiv.appendChild(button);
 document.body.appendChild(buttonDiv);
+
+//Styling the button
 button.style.backgroundColor = 'rgb(0,100,155)';
 button.style.height = '48px';
 button.style.width = '240px';
@@ -38,9 +46,13 @@ buttonDiv.style.justifyContent = 'center';
 buttonDiv.style.alignItems = 'center';
 button.classList.add('btn');
 buttonDiv.style.marginTop = '36px';
+
+//Creating the footer
 const haeckel = document.createElement('div');
 haeckel.textContent = 'Made by Haeckel';
 document.body.appendChild(haeckel);
+
+//Styling the footer
 haeckel.style.display = 'flex';
 haeckel.style.justifyContent = 'center';
 haeckel.style.alignItems = 'center';
